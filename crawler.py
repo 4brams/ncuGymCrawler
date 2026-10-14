@@ -86,6 +86,6 @@ if __name__ == "__main__":
     )
 
     # 啟動時先抓取一次（可選）
-    collect()
+    # collect()
 
     scheduler.start()
