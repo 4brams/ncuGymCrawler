@@ -1,0 +1,9 @@
+services:
+  gym-crawler:
+    build: .
+    container_name: gym-crawler
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Taipei
+    volumes:
+      - ./data:/app/data
