@@ -42,25 +42,27 @@ plt.plot(timeofOneWeek, peopleofOneWeek)
 timeofOneWeek = []
 peopleofOneWeek = []
 for i in range(START_INDEX, len(data)):
-    if data[i][1] == "N/A":
-        continue
-
     time = datetime.datetime.strptime(data[i][0], DATA_TIME_FORMATE)
 
     if lastTime.day != time.day:
         countDay += 1
-
-    if countDay > 7:
-        countDay = 1
         plt.plot(timeofOneWeek, peopleofOneWeek)
-        # print(timeofOneWeek)
         timeofOneWeek = []
         peopleofOneWeek = []
 
-    timeofOneWeek.append(time.strftime("%a %H:%M"))
-    peopleofOneWeek.append(int(data[i][1]))
+    if countDay > 7:
+        countDay = 1
+        # plt.plot(timeofOneWeek, peopleofOneWeek)
+        # timeofOneWeek = []
+        # peopleofOneWeek = []
+
+    if data[i][1] == "N/A":
+        continue
 
     lastTime = time
+
+    timeofOneWeek.append(time.strftime("%a %H:%M"))
+    peopleofOneWeek.append(int(data[i][1]))
 
 plt.plot(timeofOneWeek, peopleofOneWeek)
 plt.xticks(rotation=90, ha="right")
