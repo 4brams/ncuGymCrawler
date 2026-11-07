@@ -65,7 +65,10 @@ def collect():
 
             b = rows[1][1] if len(rows[1]) > 1 else ""
 
-            writer.writerow([timestamp, b])
+            try:
+                writer.writerow([timestamp, int(b)])
+            except:
+                b = 0
 
         logging.info("抓取成功，共取得 %d 列", len(rows))
 

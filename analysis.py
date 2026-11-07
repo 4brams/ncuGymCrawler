@@ -59,10 +59,11 @@ for i in range(START_INDEX, len(data)):
     if data[i][1] == "N/A":
         continue
 
-    lastTime = time
+    if time.hour >= 9 and time.hour < 21:
+        timeofOneWeek.append(time.strftime("%a %H:%M"))
+        peopleofOneWeek.append(int(data[i][1]))
 
-    timeofOneWeek.append(time.strftime("%a %H:%M"))
-    peopleofOneWeek.append(int(data[i][1]))
+    lastTime = time
 
 plt.plot(timeofOneWeek, peopleofOneWeek)
 plt.xticks(rotation=90, ha="right")
